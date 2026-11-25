@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FitFuel AI – Compare Smarter. Train Better.</title>
+<meta name="description" content="Compare protein powder, creatine and pre-workout across trusted Indian retailers, check value per gram of protein, and ask FIT-X, your AI fitness companion.">
+<meta name="theme-color" content="#0B0C0A">
+<meta property="og:title" content="FitFuel AI – Compare Smarter. Train Better.">
+<meta property="og:description" content="Compare supplements. Save money. Build strength.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B0C0A'/%3E%3Cpath d='M10 8h13v4h-8v4h7v4h-7v4h-5z' fill='%23B6F23A'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#0B0C0A;--s1:#141612;--s2:#1C1F19;--bd:#2A2D25;--tx:#F3F4EF;--mt:#A3A69A;--ac:#B6F23A;--act:#B6F23A;--onac:#0B0C0A;--err:#FF8A80}
+[data-theme=light]{--bg:#F4F5F0;--s1:#FFFFFF;--s2:#ECEEE6;--bd:#DADDD1;--tx:#13150F;--mt:#585C4F;--act:#4C7A05;--err:#B3261E}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden}
+a{color:var(--act)}button,input,select{font:inherit;color:inherit}
+input,select{width:100%;background:var(--s2);border:1px solid var(--bd);border-radius:12px;padding:10px 12px;min-height:46px}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:10px 20px;border-radius:999px;border:1px solid var(--bd);background:var(--s2);cursor:pointer;text-decoration:none;color:var(--tx);font-weight:600;transition:transform .15s}
+.btn.pri{background:var(--ac);color:var(--onac);border-color:var(--ac)}
+.btn:active{transform:scale(.97)}
+.small{font-size:13px}.muted{color:var(--mt)}.err{color:var(--err)}
+h1{font-size:clamp(30px,6.4vw,56px);line-height:1.05;font-weight:800;letter-spacing:-.03em}
+h2{font-size:clamp(22px,4vw,32px);font-weight:800;letter-spacing:-.02em}
+h3{font-size:17px;font-weight:700}
+section{padding:40px 0}
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:16px}
+.eyebrow{color:var(--act);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:20px;padding:18px}
+.ann{background:var(--ac);color:var(--onac);font-size:12px;font-weight:600;text-align:center;padding:6px 10px}
+header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.hbar{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;text-decoration:none;color:var(--tx)}.logo b{color:var(--act)}
+.logo i{width:30px;height:30px;border-radius:9px;background:var(--ac);display:grid;place-items:center;color:var(--onac);font-style:normal;font-weight:900}
+.nav{display:flex;gap:22px}.nav a{color:var(--mt);text-decoration:none;font-size:14px;font-weight:500}.nav a:hover{color:var(--tx)}
+.hero{margin-top:14px;border-radius:28px;overflow:hidden;color:#F3F4EF;background:radial-gradient(circle at 78% 35%,rgba(182,242,58,.28),transparent 45%),radial-gradient(circle at 10% 100%,rgba(182,242,58,.12),transparent 40%),linear-gradient(160deg,#171A14,#0A0B09);border:1px solid #2A2D25}
+.hgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:10px;align-items:center;padding:38px 34px 26px}
+.hero .lead{color:#B9BCAF;margin:14px 0 22px;max-width:540px;font-size:16px}
+.hero h1 em{font-style:normal;color:#B6F23A}
+.sbox{display:flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:6px 6px 6px 18px;color:#13150F}
+.sbox input{border:0;background:transparent;padding:8px 2px;min-height:42px;color:#13150F}
+.sbox input:focus{outline:none}.sbox:focus-within{box-shadow:0 0 0 3px rgba(182,242,58,.6)}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid #DADDD1;background:#F4F5F0;cursor:pointer;display:grid;place-items:center;flex-shrink:0;color:#13150F}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{border:1px solid var(--bd);background:var(--s1);border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer;min-height:36px;color:var(--tx)}
+.hero .chip{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:#E6E8DF}
+.chip:hover{border-color:var(--ac)}
+.stage{position:relative;max-width:340px;margin:0 auto;width:100%}
+.stage .bot svg{width:80%;height:auto;display:block;margin:0 auto}
+.bubble{background:#fff;color:#13150F;border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:13px;font-weight:500;max-width:230px;margin:0 auto 6px}
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #2A2D25}
+.hstats div{padding:14px 18px;border-right:1px solid #2A2D25}.hstats div:last-child{border-right:0}
+.hstats b{display:block;color:#B6F23A;font-size:15px}.hstats span{font-size:12px;color:#A3A69A}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.pc{background:var(--s1);border:1px solid var(--bd);border-radius:18px;cursor:pointer;text-align:left;padding:16px;color:var(--tx);display:flex;flex-direction:column;gap:4px;min-height:150px;transition:transform .2s,border-color .2s}
+.pc:hover{transform:translateY(-4px);border-color:var(--tint)}
+.pc .ltr{width:42px;height:42px;border-radius:12px;background:var(--tint);color:#fff;display:grid;place-items:center;font-weight:900;font-size:18px;margin-bottom:8px}
+.pc b{font-size:16px;line-height:1.3}.pc span{font-size:12px;color:var(--mt)}
+.pc .go{margin-top:auto;padding-top:8px;font-size:12px;font-weight:700;color:var(--act)}
+.vsg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.vc{background:var(--s1);border:1px solid var(--bd);border-radius:18px;padding:14px;cursor:pointer;text-align:left;transition:transform .2s,border-color .2s;color:var(--tx)}
+.vc:hover{transform:translateY(-4px);border-color:var(--ac)}
+.vpair{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;background:var(--s2);border-radius:14px;padding:18px 10px;margin-bottom:10px;text-align:center}
+.vpair b{font-size:15px;line-height:1.3}
+.vsb{width:38px;height:38px;border-radius:50%;background:var(--ac);color:var(--onac);display:grid;place-items:center;font-weight:900;font-size:13px}
+.goals{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.gt{position:relative;border-radius:18px;padding:16px;min-height:140px;color:#fff;cursor:pointer;text-align:left;border:0;transition:transform .2s;display:flex;flex-direction:column;gap:4px}
+.gt:hover{transform:translateY(-4px)}
+.gt b{font-size:18px;font-weight:800}.gt span{font-size:13px;opacity:.88}
+.gt .ask{margin-top:auto;align-self:flex-start;font-size:12px;font-weight:700;background:rgba(255,255,255,.18);padding:5px 10px;border-radius:999px;opacity:1}
+.mq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq .tr{display:flex;gap:10px;width:max-content;animation:mq 38s linear infinite}
+.mq:hover .tr{animation-play-state:paused}@keyframes mq{to{transform:translateX(-50%)}}
+.bc{padding:12px 20px;border-radius:14px;border:1px solid var(--bd);background:var(--s1);font-weight:800;white-space:nowrap;cursor:pointer;color:var(--tx);letter-spacing:-.01em}
+.bc:hover{border-color:var(--ac);color:var(--act)}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.num{width:36px;height:36px;border-radius:12px;background:var(--ac);color:var(--onac);display:grid;place-items:center;font-weight:900;margin-bottom:10px}
+.notice{background:color-mix(in srgb,var(--ac) 12%,transparent);border:1px solid color-mix(in srgb,var(--ac) 45%,transparent);border-radius:14px;padding:12px 14px;font-size:14px;margin:14px 0}
+.rhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.rlist{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.rrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px;border:1px solid var(--bd);border-radius:14px;text-decoration:none;color:var(--tx);background:var(--s2);transition:border-color .2s}
+.rrow:hover{border-color:var(--ac)}
+.pill{background:var(--ac);color:var(--onac);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;white-space:nowrap}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.vtop{display:flex;gap:8px;margin-bottom:10px}.vtop input{font-weight:700}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+label{font-size:12px;color:var(--mt);display:grid;gap:4px}
+.x{width:46px;height:46px;border-radius:12px;border:1px solid var(--bd);background:var(--s2);cursor:pointer;flex-shrink:0;font-size:20px}
+.vout{margin-top:12px;min-height:40px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.kv div{background:var(--s2);border-radius:12px;padding:8px 10px}.kv span{display:block;font-size:12px;color:var(--mt)}.kv b{font-size:15px}
+.best{margin-top:8px;font-size:13px;font-weight:700;color:var(--onac);background:var(--ac);border-radius:999px;padding:5px 12px;display:inline-block}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:12px}
+.tab{padding:10px 16px;border-radius:999px;border:1px solid var(--bd);background:var(--s1);cursor:pointer;white-space:nowrap;font-weight:600;font-size:14px;color:var(--tx)}
+.tab.act{background:var(--ac);color:var(--onac);border-color:var(--ac)}
+.tp{display:grid;gap:10px;max-width:560px}.tp[hidden]{display:none}
+.res{background:var(--s2);border-radius:14px;padding:14px;font-size:14px;min-height:60px}
+.res b{font-size:22px;color:var(--act)}
+.cta{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;border-radius:24px;padding:22px;background:radial-gradient(circle at 0% 50%,rgba(182,242,58,.25),transparent 50%),var(--s1);border:1px solid var(--bd)}
+.cta .mini svg{width:100%;height:auto}
+.tips{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.tip .ic{width:42px;height:42px;border-radius:12px;background:color-mix(in srgb,var(--ac) 18%,transparent);color:var(--act);display:grid;place-items:center;font-weight:900;margin-bottom:10px}
+details{border:1px solid var(--bd);border-radius:14px;padding:14px 16px;background:var(--s1);margin-top:10px}
+summary{cursor:pointer;font-weight:700}details p{margin-top:8px;color:var(--mt);font-size:15px}
+footer{border-top:1px solid var(--bd);padding:32px 0 120px;color:var(--mt);font-size:13px;margin-top:20px}
+footer .cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+footer h4{color:var(--tx);margin-bottom:6px;font-size:14px}
+.wl{display:grid;gap:8px}
+.wli{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--bd);border-radius:14px;background:var(--s1)}
+.bnav{position:fixed;bottom:0;left:0;right:0;z-index:40;display:none;grid-template-columns:repeat(5,1fr);background:var(--s1);border-top:1px solid var(--bd);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.bnav button{background:none;border:0;font-size:11px;font-weight:600;color:var(--mt);padding:6px 2px;cursor:pointer;display:grid;justify-items:center;gap:2px}
+.bnav button i{font-style:normal;font-size:19px;line-height:1}
+.bnav .mid i{width:42px;height:42px;margin-top:-20px;border-radius:50%;background:var(--ac);color:var(--onac);display:grid;place-items:center;border:4px solid var(--bg)}
+.fab{position:fixed;right:16px;bottom:24px;z-index:45;width:68px;height:68px;border-radius:50%;border:2px solid var(--ac);background:#141517;cursor:pointer;padding:6px}
+.fab.hide{display:none}.fab svg{width:100%;height:100%}
+.chat{position:fixed;right:16px;bottom:24px;z-index:50;width:min(390px,calc(100vw - 24px));height:min(610px,calc(100vh - 110px));background:var(--s1);border:1px solid var(--bd);border-radius:22px;display:none;flex-direction:column;overflow:hidden}
+.chat.open{display:flex}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px;background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 20%,var(--s1)),var(--s1));border-bottom:1px solid var(--bd)}
+.chead .mini{width:46px;height:46px;flex-shrink:0}.chead .mini svg{width:100%;height:100%}
+.chead .t{flex:1;min-width:0}.chead .t b{display:block;font-size:15px}
+.hb{width:36px;height:36px;border-radius:10px;border:1px solid var(--bd);background:var(--s2);cursor:pointer;font-size:14px}
+.cmsgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:88%;padding:10px 12px;border-radius:16px;font-size:14px;line-height:1.55;word-wrap:break-word}
+.msg.bot{background:var(--s2);border-top-left-radius:4px}
+.msg.me{background:var(--ac);color:var(--onac);align-self:flex-end;border-top-right-radius:4px}
+.msg .src{margin-top:6px;font-size:12px;color:var(--mt)}
+.csug{display:flex;gap:6px;overflow-x:auto;padding:0 12px 8px;scrollbar-width:none}
+.csug .chip{white-space:nowrap;flex-shrink:0}
+.cin{display:flex;gap:6px;padding:10px 12px;border-top:1px solid var(--bd);align-items:center}
+.cin .icon-btn{background:var(--s2);border-color:var(--bd);color:var(--tx)}
+.cfoot{padding:0 12px 10px;font-size:11px;color:var(--mt);display:flex;gap:8px;align-items:center;justify-content:space-between}
+.cfoot select{width:auto;min-height:32px;padding:4px 8px;font-size:12px}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:60;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw;text-align:center}
+.toast.show{opacity:1}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.js .rv.in{opacity:1;transform:none}
+.robot .float{animation:flt 3.2s ease-in-out infinite}
+.robot .fxhead{transform-box:view-box;transform-origin:150px 168px;animation:fxtilt 7s ease-in-out infinite}
+.robot .fxarm{transform-box:view-box;transform-origin:210px 190px;animation:fxwave 6s ease-in-out infinite}
+.robot .eye{transform-box:fill-box;transform-origin:center;animation:blk 4.5s infinite}
+.robot .core{animation:pls 2.2s infinite}
+.robot .mouth{transform-box:fill-box;transform-origin:center top}
+.robot.talk .mouth{animation:talk .16s ease-in-out infinite alternate}
+.robot.think .eye{animation:none;transform:translateY(-5px)}
+.robot.think .core{animation:pls .45s infinite}
+.robot.listen .hp{animation:pls .5s infinite}
+.robot.listen .fxhead{animation:none;transform:rotate(-6deg)}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes fxwave{0%,62%,100%{transform:rotate(0)}10%{transform:rotate(-150deg)}18%{transform:rotate(-125deg)}26%{transform:rotate(-160deg)}34%{transform:rotate(-125deg)}42%{transform:rotate(-150deg)}54%{transform:rotate(0)}}
+@keyframes fxtilt{0%,100%{transform:rotate(0)}30%{transform:rotate(-3deg)}70%{transform:rotate(3deg)}}
+@keyframes blk{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+@keyframes pls{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes talk{from{transform:scaleY(1)}to{transform:scaleY(1.9)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.js .rv{opacity:1;transform:none}}
+@media (max-width:860px){
+ .nav{display:none}.bnav{display:grid}
+ .hgrid{grid-template-columns:1fr;padding:26px 18px 14px}
+ .stage{max-width:260px}
+ .hstats{grid-template-columns:1fr 1fr}.hstats div:nth-child(2){border-right:0}.hstats div:nth-child(-n+2){border-bottom:1px solid #2A2D25}
+ .cats{grid-template-columns:1fr 1fr}
+ .fab{bottom:84px}.chat{bottom:78px;right:12px;height:min(610px,calc(100vh - 150px))}
+ .cta{grid-template-columns:80px 1fr}
+ .toast{bottom:150px}
+}
+</style>
+</head>
+<body>
+
+<div class="ann">Free · No sign-up · Live prices from trusted retailers</div>
+<header>
+ <div class="wrap hbar">
+  <a href="#top" class="logo" aria-label="FitFuel AI home"><i>F</i><span>Fit<b>Fuel</b> AI</span></a>
+  <nav class="nav" aria-label="Main">
+   <a href="#categories">Categories</a><a href="#compare">Comparisons</a><a href="#goals">Goals</a><a href="#value">Value checker</a><a href="#calc">Calculators</a><a href="#trust">Authenticity</a>
+  </nav>
+  <button class="btn" id="themeBtn" style="min-height:38px;padding:6px 14px;font-size:13px">Light mode</button>
+ </div>
+</header>
+
+<main id="top" class="wrap">
+ <div class="hero">
+  <div class="hgrid">
+   <div>
+    <div class="eyebrow" style="color:#B6F23A">Compare smarter. Train better.</div>
+    <h1>Compare supplements. <em>Save money.</em> Build strength.</h1>
+    <p class="lead">Find protein powder, creatine and pre-workout, jump to live prices on trusted Indian retailers, and see the real cost per gram of protein.</p>
+    <form class="sbox" id="sform" role="search">
+     <span aria-hidden="true" style="color:#585C4F">&#9906;</span>
+     <input id="q" type="search" placeholder="Search whey, creatine, brand…" aria-label="Search supplements" autocomplete="off">
+     <button type="button" class="icon-btn" id="qmic" aria-label="Search by voice">&#127908;</button>
+     <button class="btn pri" type="submit">Compare</button>
+    </form>
+    <div id="serr" class="small" style="margin-top:6px;color:#FF8A80"></div>
+    <div class="chips" id="exChips"></div>
+   </div>
+   <div class="stage">
+    <div class="bubble">Hi! I'm FIT-X. Ask me which protein fits your goal and budget.</div>
+    <div class="bot" id="heroBot"></div>
+    <div style="text-align:center;margin-top:8px"><button class="btn pri" id="talkBtn">Talk to FIT-X</button></div>
+   </div>
+  </div>
+  <div class="hstats">
+   <div><b>5 retailers</b><span>Live price links</span></div>
+   <div><b>₹ per 25 g</b><span>Real protein value</span></div>
+   <div><b>12 categories</b><span>Protein to vitamins</span></div>
+   <div><b>No sign-up</b><span>Free for everyone</span></div>
+  </div>
+ </div>
+
+ <div id="results" style="margin-top:22px"></div>
+
+ <section id="categories" class="rv">
+  <div class="shead"><div><div class="eyebrow">Shop by category</div><h2>What are you looking for?</h2></div></div>
+  <div class="cats" id="catGrid"></div>
+ </section>
+
+ <section id="compare" class="rv">
+  <div class="shead"><div><div class="eyebrow">Popular comparisons</div><h2>Which one should you buy?</h2></div></div>
+  <div class="vsg" id="vsGrid"></div>
+ </section>
+
+ <section id="goals" class="rv">
+  <div class="shead"><div><div class="eyebrow">Shop by goal</div><h2>Start with your goal</h2></div></div>
+  <div class="goals" id="goalGrid"></div>
+ </section>
+
+ <section class="rv">
+  <div class="shead"><div><div class="eyebrow">Browse by brand</div><h2>Popular brands in India</h2></div></div>
+  <div class="mq"><div class="tr" id="brandTrack"></div></div>
+ </section>
+
+ <section class="rv">
+  <div class="shead"><div><div class="eyebrow">How it works</div><h2>Buy smarter in 3 steps</h2></div></div>
+  <div class="steps">
+   <div class="card"><div class="num">1</div><h3>Search</h3><p class="small muted">Type a product, brand or goal — or just speak it.</p></div>
+   <div class="card"><div class="num">2</div><h3>Check live prices</h3><p class="small muted">Open each trusted retailer's live price in one tap. We never show guessed prices.</p></div>
+   <div class="card"><div class="num">3</div><h3>Compare real value</h3><p class="small muted">Enter label numbers to see ₹ per 25 g of protein and spot the best deal.</p></div>
+  </div>
+ </section>
+
+ <section id="value" class="rv">
+  <div class="shead"><div><div class="eyebrow">Value checker</div><h2>Is the cheaper tub really cheaper?</h2><p class="muted small" style="margin-top:4px">Enter the price and label numbers for up to 4 products.</p></div></div>
+  <div class="vgrid" id="vrows"></div>
+  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn" id="addRow">+ Add product</button><button class="btn" id="resetRows">Reset</button></div>
+ </section>
+
+ <section id="calc" class="rv">
+  <div class="shead"><div><div class="eyebrow">Calculators</div><h2>Know your numbers</h2><p class="muted small" style="margin-top:4px">Estimates only, not medical advice. Results update as you type.</p></div></div>
+  <div class="tabs" role="tablist">
+   <button class="tab act" data-tab="tProt">Protein</button><button class="tab" data-tab="tTdee">Calories</button><button class="tab" data-tab="tBmi">BMI</button><button class="tab" data-tab="tCrea">Creatine cost</button>
+  </div>
+  <div class="card">
+   <form class="tp" id="tProt" onsubmit="return false">
+    <label>Body weight (kg)<input type="number" inputmode="decimal" name="w" value="70"></label>
+    <label>Activity<select name="a"><option value="rda">Mostly inactive</option><option value="train" selected>Strength training regularly</option></select></label>
+    <div class="res" id="rProt"></div>
+   </form>
+   <form class="tp" id="tTdee" onsubmit="return false" hidden>
+    <div class="g2">
+     <label>Sex<select name="s"><option value="m">Male</option><option value="f">Female</option></select></label>
+     <label>Age<input type="number" inputmode="numeric" name="age" value="25"></label>
+     <label>Height (cm)<input type="number" inputmode="decimal" name="h" value="172"></label>
+     <label>Weight (kg)<input type="number" inputmode="decimal" name="w" value="70"></label>
+    </div>
+    <label>Activity<select name="a"><option value="1.2">Little or no exercise</option><option value="1.375">Light, 1–3 days/week</option><option value="1.55" selected>Moderate, 3–5 days/week</option><option value="1.725">Hard, 6–7 days/week</option><option value="1.9">Very hard or physical job</option></select></label>
+    <div class="res" id="rTdee"></div>
+   </form>
+   <form class="tp" id="tBmi" onsubmit="return false" hidden>
+    <div class="g2"><label>Height (cm)<input type="number" inputmode="decimal" name="h" value="172"></label><label>Weight (kg)<input type="number" inputmode="decimal" name="w" value="70"></label></div>
+    <div class="res" id="rBmi"></div>
+   </form>
+   <form class="tp" id="tCrea" onsubmit="return false" hidden>
+    <div class="g2">
+     <label>Price (₹)<input type="number" inputmode="decimal" name="p" placeholder="Enter price"></label>
+     <label>Pack size (g)<input type="number" inputmode="decimal" name="g" value="250"></label>
+     <label>Creatine per scoop (g)<input type="number" inputmode="decimal" name="c" value="3"></label>
+     <label>Scoop weight (g)<input type="number" inputmode="decimal" name="s" value="3"></label>
+    </div>
+    <div class="res" id="rCrea"></div>
+   </form>
+  </div>
+ </section>
+
+ <section class="rv">
+  <div class="cta">
+   <div class="mini miniBot"></div>
+   <div><h2 style="font-size:clamp(20px,3.6vw,28px)">Not sure what to buy?</h2><p class="muted small" style="margin:4px 0 12px">Ask FIT-X about protein, creatine, workouts or spotting fakes. Type or speak in English or Hindi.</p><button class="btn pri" id="ctaBtn">Ask FIT-X</button></div>
+  </div>
+ </section>
+
+ <section id="trust" class="rv">
+  <div class="shead"><div><div class="eyebrow">Authenticity</div><h2>How to avoid fake supplements</h2></div></div>
+  <div class="tips">
+   <div class="card tip"><div class="ic">1</div><h3>Buy from the right seller</h3><p class="small muted">Prefer the brand's own store or an authorised retailer. On Amazon and Flipkart, check the seller — a big marketplace doesn't make every seller authorised.</p></div>
+   <div class="card tip"><div class="ic">2</div><h3>Check the label</h3><p class="small muted">Intact seal, batch number, manufacturing and expiry dates, manufacturer or importer address and FSSAI licence number.</p></div>
+   <div class="card tip"><div class="ic">3</div><h3>Use the brand's check</h3><p class="small muted">Scan QR or scratch codes on the brand's official website, not a link printed on a sticker.</p></div>
+   <div class="card tip"><div class="ic">4</div><h3>Too cheap is a warning</h3><p class="small muted">A price far below every trusted retailer is a common sign of fake or expired stock.</p></div>
+   <div class="card tip"><div class="ic">5</div><h3>Look for lab reports</h3><p class="small muted">Independent tests (for example Trustified, Informed Sport, NSF) apply to the product and batch tested, not the whole brand.</p></div>
+   <div class="card tip"><div class="ic">6</div><h3>FSSAI isn't a lab test</h3><p class="small muted">An FSSAI licence shows the business is licensed. It doesn't prove a tub was tested for protein content.</p></div>
+  </div>
+ </section>
+
+ <section id="watch" class="rv">
+  <div class="shead"><div><div class="eyebrow">Watchlist</div><h2>Your saved searches</h2><p class="muted small" style="margin-top:4px">Saved only in this browser. Price-drop alerts aren't available yet.</p></div></div>
+  <div class="wl" id="wl"></div>
+ </section>
+
+ <section id="faq" class="rv">
+  <h2>Frequently asked questions</h2>
+  <details><summary>Are the prices on FitFuel live?</summary><p>FitFuel doesn't show a price unless it has been verified. For now, searching opens each retailer's own live search, so the price you see there is current. A verified price catalogue is being built.</p></details>
+  <details><summary>Is FIT-X a real AI?</summary><p>FIT-X is an evidence-based fitness knowledge assistant. It answers from curated sports-nutrition guidance with sources, not a large language model, so it won't invent prices or facts. If it doesn't know, it says so.</p></details>
+  <details><summary>Do I need an account?</summary><p>No. Everything is free and works without signing up. Your watchlist and settings stay in your own browser.</p></details>
+  <details><summary>How is "best value" decided?</summary><p>Only by cost per gram of protein, from the price and label numbers you enter. FitFuel doesn't rank products for payment and has no affiliate links at present.</p></details>
+ </section>
+</main>
+
+<footer>
+ <div class="wrap cols">
+  <div><a href="#top" class="logo"><i>F</i><span>Fit<b>Fuel</b> AI</span></a><p style="margin-top:8px">Compare smarter. Train better.</p></div>
+  <div><h4>Medical disclaimer</h4><p>General education, not medical advice. If you're under 18, pregnant or breastfeeding, or have kidney, liver, heart or other conditions, consult a doctor or registered dietitian before using supplements.</p></div>
+  <div><h4>Price accuracy and data</h4><p>FitFuel never estimates prices. Retailer links open the retailer's own live search. Confirm price, seller and expiry before buying. No affiliate relationships at present.</p></div>
+  <div><h4>Privacy and contact</h4><p>No sign-up and no tracking cookies. Watchlist data stays in your browser. Report incorrect information: <a href="mailto:YOUR-EMAIL@example.com">YOUR-EMAIL@example.com</a></p></div>
+ </div>
+</footer>
+
+<button class="fab" id="fab" aria-label="Open FIT-X chat"><span class="miniBot"></span></button>
+
+<div class="chat" id="chat" role="dialog" aria-label="FIT-X chat">
+ <div class="chead">
+  <div class="mini miniBot"></div>
+  <div class="t"><b>FIT-X</b><span class="small muted">Fitness knowledge assistant</span></div>
+  <button class="hb" id="muteBtn" aria-label="Mute voice">&#128266;</button>
+  <button class="hb" id="stopBtn" aria-label="Stop speaking">&#9632;</button>
+  <button class="hb" id="clearBtn" aria-label="Clear chat">&#8634;</button>
+  <button class="hb" id="minBtn" aria-label="Minimise chat">&#8212;</button>
+ </div>
+ <div class="cmsgs" id="cmsgs" aria-live="polite"></div>
+ <div class="csug" id="csug"></div>
+ <form class="cin" id="cform">
+  <button type="button" class="icon-btn" id="cmic" aria-label="Speak your question">&#127908;</button>
+  <input id="cin" placeholder="Ask about protein, creatine, workouts…" autocomplete="off" aria-label="Message FIT-X">
+  <button class="btn pri" type="submit" style="padding:10px 14px">Send</button>
+ </form>
+ <div class="cfoot">
+  <span>Voice input may be processed by your browser's speech service. Replies are in English.</span>
+  <select id="lang" aria-label="Voice input language"><option value="en-IN">English</option><option value="hi-IN">हिन्दी / Hinglish</option></select>
+ </div>
+</div>
+
+<nav class="bnav" aria-label="Mobile">
+ <button data-go="top"><i>&#8962;</i>Home</button>
+ <button data-go="search"><i>&#9906;</i>Search</button>
+ <button data-go="coach" class="mid"><i>&#9673;</i>AI Coach</button>
+ <button data-go="value"><i>&#8644;</i>Compare</button>
+ <button data-go="watch"><i>&#9734;</i>Saved</button>
+</nav>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+document.documentElement.classList.add('js');
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600)}
+const inr=n=>'₹'+Number(n).toLocaleString('en-IN',{maximumFractionDigits:n<100?1:0});
+
+function setTheme(t){document.documentElement.dataset.theme=t;store.set('ff-theme',t);$('#themeBtn').textContent=t==='light'?'Dark mode':'Light mode'}
+setTheme(store.get('ff-theme','dark'));
+$('#themeBtn').onclick=()=>setTheme(document.documentElement.dataset.theme==='light'?'dark':'light');
+
+/* FIT-X robot */
+const EY='#7CFF5A';
+const DEFS='<defs><linearGradient id="fxW" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBFBF8"/><stop offset="1" stop-color="#CBCCC6"/></linearGradient><linearGradient id="fxG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7BE35A"/><stop offset="1" stop-color="#36992A"/></linearGradient><filter id="fxGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4"/></filter><clipPath id="fxHC"><rect x="62" y="18" width="176" height="150" rx="78" ry="72"/></clipPath></defs>';
+const HEAD='<g class="fxhead">'
++'<rect class="hp" x="52" y="68" width="24" height="60" rx="11" fill="url(#fxG)"/><rect x="58" y="76" width="10" height="44" rx="5" fill="#9BF27A" opacity=".5"/>'
++'<rect class="hp" x="224" y="68" width="24" height="60" rx="11" fill="url(#fxG)"/><rect x="232" y="76" width="10" height="44" rx="5" fill="#9BF27A" opacity=".5"/>'
++'<rect x="62" y="18" width="176" height="150" rx="78" ry="72" fill="url(#fxW)"/>'
++'<path clip-path="url(#fxHC)" d="M98 54 Q100 22 150 14 Q200 22 202 54 Q150 44 98 54 Z" fill="url(#fxG)"/>'
++'<rect x="75" y="55" width="150" height="86" rx="38" fill="#C4C5BF"/><rect x="79" y="59" width="142" height="78" rx="34" fill="#0A0B0D"/>'
++'<path d="M96 67 Q150 59 204 67" stroke="#fff" stroke-width="3" opacity=".08" fill="none" stroke-linecap="round"/>'
++'<g class="eye"><ellipse cx="117" cy="92" rx="15" ry="17" fill="'+EY+'" opacity=".55" filter="url(#fxGlow)"/><ellipse cx="117" cy="92" rx="11" ry="13" fill="'+EY+'"/></g>'
++'<g class="eye"><ellipse cx="183" cy="92" rx="15" ry="17" fill="'+EY+'" opacity=".55" filter="url(#fxGlow)"/><ellipse cx="183" cy="92" rx="11" ry="13" fill="'+EY+'"/></g>'
++'<g class="mouth"><path d="M130 114 Q150 130 170 114" stroke="'+EY+'" stroke-width="9" opacity=".45" fill="none" stroke-linecap="round" filter="url(#fxGlow)"/><path d="M130 114 Q150 130 170 114" stroke="'+EY+'" stroke-width="6" fill="none" stroke-linecap="round"/></g></g>';
+const ARM='<circle cx="90" cy="190" r="11" fill="#2A2B2E"/><ellipse cx="72" cy="196" rx="21" ry="23" fill="url(#fxW)"/><circle cx="56" cy="222" r="9" fill="#2A2B2E"/><rect x="36" y="222" width="40" height="56" rx="16" fill="url(#fxW)"/><rect x="40" y="276" width="32" height="7" rx="3" fill="#2A2B2E"/><rect x="40" y="282" width="8" height="22" rx="4" fill="#ECEDE8"/><rect x="50" y="284" width="8" height="24" rx="4" fill="#ECEDE8"/><rect x="60" y="282" width="8" height="20" rx="4" fill="#ECEDE8"/><rect x="67" y="278" width="8" height="16" rx="4" fill="#E2E3DE" transform="rotate(-20 71 286)"/>';
+const BODY='<ellipse cx="150" cy="371" rx="82" ry="6" fill="#000" opacity=".35"/>'
++'<rect x="104" y="284" width="92" height="16" rx="8" fill="#2A2B2E"/>'
++'<rect x="100" y="294" width="42" height="26" rx="10" fill="url(#fxW)"/><rect x="158" y="294" width="42" height="26" rx="10" fill="url(#fxW)"/>'
++'<ellipse cx="121" cy="322" rx="19" ry="8" fill="#2A2B2E"/><ellipse cx="179" cy="322" rx="19" ry="8" fill="#2A2B2E"/>'
++'<rect x="99" y="324" width="44" height="34" rx="14" fill="url(#fxW)"/><rect x="157" y="324" width="44" height="34" rx="14" fill="url(#fxW)"/>'
++'<path d="M92 368 Q92 348 112 348 H134 Q148 348 148 368 Z" fill="#F2F2EE"/><path d="M152 368 Q152 348 166 348 H188 Q208 348 208 368 Z" fill="#F2F2EE"/>'
++ARM
++'<rect x="128" y="160" width="44" height="18" rx="6" fill="#2A2B2E"/>'
++'<path d="M94 178 Q150 166 206 178 Q216 236 198 292 Q150 304 102 292 Q84 236 94 178 Z" fill="url(#fxW)"/>'
++'<rect class="core" x="131" y="196" width="38" height="80" rx="19" fill="url(#fxG)"/><rect x="137" y="203" width="9" height="40" rx="4.5" fill="#fff" opacity=".25"/>';
+const RARM='<g class="fxarm"><g transform="translate(300 0) scale(-1 1)">'+ARM+'</g></g>';
+$('#heroBot').innerHTML='<svg class="robot" viewBox="0 0 300 380" role="img" aria-label="FIT-X robot waving">'+DEFS+'<g class="float">'+BODY+HEAD+RARM+'</g></svg>';
+$$('.miniBot').forEach(el=>el.innerHTML='<svg class="robot" viewBox="46 8 208 170" aria-hidden="true">'+DEFS+HEAD+'</svg>');
+function botState(s){$$('.robot').forEach(r=>{r.classList.remove('talk','think','listen');if(s)r.classList.add(s)})}
+
+/* Categories (names only), comparisons, goals, brands */
+const CATS=[['Whey protein','Concentrate, blends, raw','whey protein','#8B5A3C'],['Whey isolate','Low lactose, high protein','whey protein isolate','#1E5BB8'],['Plant protein','Pea, soy, rice, blends','plant protein','#2F8F46'],['Mass gainer','High-calorie gainers','mass gainer','#B3261E'],['Creatine','Monohydrate, Creapure','creatine monohydrate','#5C6BC0'],['Pre-workout','Energy and pump','pre workout','#E8590C'],['BCAA and EAA','Amino acids, recovery','eaa supplement','#0E9F9F'],['Casein','Slow-digesting protein','casein protein','#5E35B1'],['Electrolytes','Hydration, endurance','electrolytes sports drink','#1C7ED6'],['Protein bars','Snacks on the go','protein bar','#6D4C41'],['Peanut butter','High-protein spreads','high protein peanut butter','#B7791F'],['Multivitamins','Vitamins, omega-3','multivitamin','#C99700']];
+$('#catGrid').innerHTML=CATS.map(c=>`<button class="pc" data-q="${esc(c[2])}" style="--tint:${c[3]}"><div class="ltr">${esc(c[0].charAt(0))}</div><b>${esc(c[0])}</b><span>${esc(c[1])}</span><span class="go">Check prices &#8594;</span></button>`).join('');
+const VS=[['Whey concentrate','Whey isolate','Whey concentrate or isolate — which should I buy?'],['Creatine monohydrate','Creatine HCl','Which creatine is best — monohydrate or HCl?'],['Mass gainer','Whey protein','Mass gainer vs whey protein — which do I need?'],['BCAA','Whey protein','Do I need BCAA if I take whey?'],['Plant protein','Whey protein','Is plant protein good for vegetarians?'],['Yeast protein','Whey protein','Is yeast protein as good as whey?']];
+$('#vsGrid').innerHTML=VS.map(v=>`<button class="vc" data-ask="${esc(v[2])}"><div class="vpair"><b>${esc(v[0])}</b><div class="vsb">VS</div><b>${esc(v[1])}</b></div><div class="small muted">Ask FIT-X for the honest answer &#8594;</div></button>`).join('');
+const GOALS=[['Muscle gain','Build size and strength','How do I build muscle?','#14301A','#3F7A16'],['Fat loss','Lose fat, keep muscle','How do I lose fat?','#3A1410','#C2410C'],['Weight gain','Eat in a surplus','Do I need a mass gainer to gain weight?','#2A1A10','#8D5524'],['Gym beginner','Start the right way','How should a beginner start in the gym?','#0F1E3A','#2563EB'],['Vegetarian','Protein without meat','How can vegetarians get enough protein?','#0F2A1A','#16A34A'],['Best value','Pay for protein, not hype','Is an expensive protein always better?','#2A2410','#CA8A04']];
+$('#goalGrid').innerHTML=GOALS.map(g=>`<button class="gt" data-ask="${esc(g[2])}" style="background:linear-gradient(140deg,${g[3]},${g[4]})"><b>${g[0]}</b><span>${g[1]}</span><span class="ask">Ask FIT-X</span></button>`).join('');
+const BRANDS=['MuscleBlaze','Optimum Nutrition','Avvatar','AS-IT-IS','Nakpro','Myprotein','Dymatize','MuscleTech','The Whole Truth','Wellcore','Isopure','GNC','Fast&Up','Nutrabay','Bigmuscles','Ultimate Nutrition'];
+const bl=BRANDS.map(b=>`<button class="bc" data-q="${esc(b)}">${esc(b)}</button>`).join('');$('#brandTrack').innerHTML=bl+bl;
+const EX=['Biozyme whey','ON gold standard','creatine monohydrate','whey isolate','pre workout'];
+$('#exChips').innerHTML=EX.map(x=>`<button class="chip" data-q="${esc(x)}">${esc(x)}</button>`).join('');
+
+/* Search */
+const ABBR={gsw:'gold standard whey',mb:'muscleblaze',asitis:'as-it-is',wpc:'whey protein concentrate',wpi:'whey protein isolate',protien:'protein',prtein:'protein',protin:'protein',whay:'whey',wey:'whey',creatin:'creatine',creatien:'creatine',kreatine:'creatine',biozme:'biozyme',gainar:'gainer',isolat:'isolate',preworkout:'pre workout',muscleblase:'muscleblaze',avatar:'avvatar'};
+function normalize(q){const w=q.trim().split(/\s+/);let ch=false;const out=w.map((x,i)=>{const c=x.toLowerCase().replace(/[^a-z0-9-]/g,'');if(i===0&&c==='on'&&w.length>1){ch=true;return 'optimum nutrition'}if(ABBR[c]){ch=true;return ABBR[c]}return x});return{text:out.join(' '),ch}}
+const RET=[{n:'HealthKart',t:'Supplement retailer',u:q=>'https://www.healthkart.com/search?txtQ='+q},{n:'Amazon India',t:'Marketplace — check seller name',u:q=>'https://www.amazon.in/s?k='+q},{n:'Flipkart',t:'Marketplace — check seller name',u:q=>'https://www.flipkart.com/search?q='+q},{n:'Tata 1mg',t:'Health retailer',u:q=>'https://www.1mg.com/search/all?name='+q},{n:'Google Shopping',t:'More stores incl. brand sites — verify seller',u:q=>'https://www.google.com/search?tbm=shop&q='+q}];
+function runSearch(raw,scroll=true){raw=(raw||'').trim();if(!raw){$('#serr').textContent='Type a product, brand or category first.';return}
+ $('#serr').textContent='';const {text,ch}=normalize(raw);const enc=encodeURIComponent(text);
+ $('#results').innerHTML=`<div class="card"><div class="rhead"><div><div class="small muted">Results for</div><h3 style="font-size:20px">${esc(text)}</h3>${ch?`<div class="small muted">Corrected from "${esc(raw)}"</div>`:''}</div><button class="btn" id="saveQ">&#9734; Save</button></div>
+ <div class="notice"><b>Current price unavailable on FitFuel.</b> Our verified catalogue is still being built, so we don't show guessed prices. Each link opens the retailer's own live search with today's price.</div>
+ <div class="rlist">${RET.map(r=>`<a class="rrow" href="${r.u(enc)}" target="_blank" rel="noopener nofollow"><div><b>${r.n}</b><div class="small muted">${r.t}</div></div><span class="pill">Live price &#8599;</span></a>`).join('')}</div>
+ <p class="small muted" style="margin-top:12px">Match the exact flavour, pack size and formulation before comparing, then use the <a href="#value">value checker</a> for ₹ per 25 g of protein.</p></div>`;
+ $('#saveQ').onclick=()=>saveW(text);if(scroll)$('#results').scrollIntoView({behavior:'smooth',block:'start'})}
+$('#sform').onsubmit=e=>{e.preventDefault();runSearch($('#q').value)};
+$('#q').oninput=()=>$('#serr').textContent='';
+document.addEventListener('click',e=>{const q=e.target.closest('[data-q]');if(q){$('#q').value=q.dataset.q;runSearch(q.dataset.q)}const a=e.target.closest('[data-ask]');if(a)openChat(a.dataset.ask)});
+
+/* Value checker */
+const blank=n=>({n,p:'',w:'',s:'',pr:''});
+let rows=store.get('ff-rows',[blank('Product A'),blank('Product B')]);
+function renderRows(){$('#vrows').innerHTML=rows.map((r,i)=>`<div class="card" data-i="${i}"><div class="vtop"><input data-f="n" value="${esc(r.n)}" aria-label="Product name">${rows.length>1?`<button class="x" data-del="${i}" aria-label="Remove product">&times;</button>`:''}</div>
+ <div class="g2"><label>Price (₹)<input type="number" inputmode="decimal" min="0" data-f="p" value="${esc(r.p)}"></label><label>Pack weight (g)<input type="number" inputmode="decimal" min="0" data-f="w" value="${esc(r.w)}"></label>
+ <label>Serving size (g)<input type="number" inputmode="decimal" min="0" data-f="s" value="${esc(r.s)}"></label><label>Protein per serving (g)<input type="number" inputmode="decimal" min="0" data-f="pr" value="${esc(r.pr)}"></label></div><div class="vout" id="vo${i}"></div></div>`).join('');
+ $('#addRow').style.display=rows.length>=4?'none':'';calcRows()}
+function calcRows(){const res=rows.map(r=>{const p=+r.p,w=+r.w,s=+r.s,pr=+r.pr;if(!(p>0&&w>0&&s>0&&pr>0))return null;if(pr>s)return{err:'Protein per serving can’t be more than the serving size.'};const conc=pr/s,tot=w*conc,serv=w/s;return{conc:conc*100,tot,serv,ps:p/serv,pk:p/w*1000,p25:p/tot*25}});
+ const ok=res.filter(x=>x&&!x.err);const best=ok.length>1?Math.min(...ok.map(x=>x.p25)):null;
+ res.forEach((x,i)=>{const el=$('#vo'+i);if(!el)return;if(!x){el.innerHTML='<span class="small muted">Enter all four numbers from the label to see the value.</span>';return}if(x.err){el.innerHTML=`<span class="small err">${x.err}</span>`;return}
+ el.innerHTML=`<div class="kv"><div><span>Protein content</span><b>${x.conc.toFixed(0)}%</b></div><div><span>Total protein</span><b>${Math.round(x.tot)} g</b></div><div><span>₹ per serving</span><b>${inr(x.ps)}</b></div><div><span>₹ per kg</span><b>${inr(x.pk)}</b></div><div style="grid-column:1/-1"><span>₹ per 25 g protein · about ${Math.floor(x.serv)} servings</span><b>${inr(x.p25)}</b></div></div>${best!==null&&x.p25===best?'<div class="best">Best value per gram of protein</div>':''}`})}
+$('#vrows').addEventListener('input',e=>{const f=e.target.dataset.f;if(!f)return;const i=+e.target.closest('[data-i]').dataset.i;rows[i][f]=e.target.value;store.set('ff-rows',rows);calcRows()});
+$('#vrows').addEventListener('click',e=>{const d=e.target.closest('[data-del]');if(!d)return;rows.splice(+d.dataset.del,1);store.set('ff-rows',rows);renderRows()});
+$('#addRow').onclick=()=>{if(rows.length<4){rows.push(blank('Product '+String.fromCharCode(65+rows.length)));store.set('ff-rows',rows);renderRows()}};
+$('#resetRows').onclick=()=>{rows=[blank('Product A'),blank('Product B')];store.set('ff-rows',rows);renderRows()};
+renderRows();
+
+/* Calculators */
+$$('.tab').forEach(b=>b.onclick=()=>{$$('.tab').forEach(x=>x.classList.toggle('act',x===b));$$('.tp').forEach(p=>p.hidden=p.id!==b.dataset.tab)});
+const fv=(f,n)=>parseFloat(f.elements[n].value);
+function live(id,fn){const f=$(id);f.addEventListener('input',fn);f.addEventListener('change',fn);fn()}
+live('#tProt',()=>{const f=$('#tProt'),w=fv(f,'w'),o=$('#rProt');if(!(w>=20&&w<=250)){o.innerHTML='<span class="err small">Enter a weight between 20 and 250 kg.</span>';return}
+ if(f.elements.a.value==='rda'){o.innerHTML=`<b>${Math.round(w*0.83)} g/day</b><div class="small muted">ICMR–NIN recommended intake for healthy adults is about 0.83 g per kg.</div>`;return}
+ o.innerHTML=`<b>${Math.round(w*1.4)}–${Math.round(w*2)} g/day</b><div class="small muted">1.4–2.0 g per kg (ISSN). About ${Math.round(w*1.6/4)} g per meal over 4 meals. Food first; powder fills the gap.</div>`});
+live('#tTdee',()=>{const f=$('#tTdee'),age=fv(f,'age'),h=fv(f,'h'),w=fv(f,'w'),a=fv(f,'a'),o=$('#rTdee');if(!(age>=15&&age<=90&&h>=120&&h<=230&&w>=30&&w<=250)){o.innerHTML='<span class="err small">Check age (15–90), height (120–230 cm) and weight (30–250 kg).</span>';return}
+ const bmr=10*w+6.25*h-5*age+(f.elements.s.value==='m'?5:-161),t=bmr*a,r=x=>(Math.round(x/10)*10).toLocaleString('en-IN');
+ o.innerHTML=`<b>${r(t)} kcal/day</b><div class="small muted">Maintenance estimate (Mifflin–St Jeor; BMR ${r(bmr)}). Fat loss: about ${r(t-500)}–${r(t-300)}. Lean gain: about ${r(t+250)}–${r(t+400)}. Adjust after 2–3 weeks based on your weight trend.</div>`});
+live('#tBmi',()=>{const f=$('#tBmi'),h=fv(f,'h'),w=fv(f,'w'),o=$('#rBmi');if(!(h>=120&&h<=230&&w>=20&&w<=250)){o.innerHTML='<span class="err small">Enter height 120–230 cm and weight 20–250 kg.</span>';return}
+ const b=w/Math.pow(h/100,2),c=b<18.5?'Underweight':b<23?'Normal':b<25?'Overweight':'Obese';
+ o.innerHTML=`<b>${b.toFixed(1)}</b> · ${c}<div class="small muted">Uses Asian Indian cut-offs (23 and 25), lower than WHO's. BMI doesn't separate muscle from fat, so muscular people may read high.</div>`});
+live('#tCrea',()=>{const f=$('#tCrea'),p=fv(f,'p'),g=fv(f,'g'),c=fv(f,'c'),s=fv(f,'s'),o=$('#rCrea');if(!(p>0&&g>0&&c>0&&s>0)){o.innerHTML='<span class="small muted">Enter the price and label numbers to see the cost.</span>';return}if(c>s){o.innerHTML='<span class="err small">Creatine per scoop can’t exceed the scoop weight.</span>';return}
+ const tot=g*c/s;o.innerHTML=`<b>${inr(p/tot*5)} per 5 g creatine</b><div class="small muted">${Math.round(tot)} g of actual creatine · about ${Math.floor(tot/5)} days at 5 g/day (${Math.floor(tot/3)} days at 3 g).</div>`});
+
+/* Watchlist */
+const getW=()=>store.get('ff-watch',[]);
+function saveW(q){const w=getW().filter(x=>x.q!==q);w.unshift({q,d:new Date().toLocaleDateString('en-IN')});store.set('ff-watch',w.slice(0,20));renderW();toast('Saved to your watchlist')}
+function renderW(){const w=getW();$('#wl').innerHTML=w.length?w.map((x,i)=>`<div class="wli"><div><b>${esc(x.q)}</b><div class="small muted">Saved ${esc(x.d)}</div></div><div style="display:flex;gap:6px"><button class="btn" data-q="${esc(x.q)}" style="min-height:40px;padding:6px 14px">Prices</button><button class="x" data-rm="${i}" aria-label="Remove">&times;</button></div></div>`).join(''):'<div class="card small muted">Search for a product and tap "Save" to keep it here.</div>'}
+$('#wl').addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(!r)return;const w=getW();w.splice(+r.dataset.rm,1);store.set('ff-watch',w);renderW()});
+renderW();
+
+/* FIT-X knowledge base */
+const S={prot:{t:'ISSN position stand: protein and exercise',u:'https://pubmed.ncbi.nlm.nih.gov/?term=ISSN+position+stand+protein+and+exercise'},crea:{t:'ISSN position stand: creatine supplementation',u:'https://pubmed.ncbi.nlm.nih.gov/?term=ISSN+position+stand+creatine+supplementation+safety+efficacy'},caff:{t:'ISSN position stand: caffeine and exercise performance',u:'https://pubmed.ncbi.nlm.nih.gov/?term=ISSN+position+stand+caffeine+exercise+performance'},ods:{t:'NIH Office of Dietary Supplements',u:'https://ods.od.nih.gov/'},fssai:{t:'FSSAI',u:'https://www.fssai.gov.in/'},acsm:{t:'ACSM position stand: resistance training',u:'https://pubmed.ncbi.nlm.nih.gov/?term=ACSM+position+stand+progression+models+resistance+training+healthy+adults'},mort:{t:'Morton et al. 2018, protein and muscle meta-analysis',u:'https://pubmed.ncbi.nlm.nih.gov/?term=Morton+2018+protein+supplementation+resistance+training+meta-analysis'}};
+const KB=[
+{w:5,k:['steroid','sarm','tren','dianabol','testosterone cycle','injection for muscle','anabolic'],a:`I can't help with steroids, SARMs or other banned performance drugs. They carry serious risks for the heart, liver, hormones and fertility, and using them without a prescription is illegal in India. If you're thinking about them, please talk to a doctor first. I'm happy to help you build muscle with training, food and evidence-backed supplements instead.`},
+{w:4,k:['kidney','liver','pregnan','breastfeed','diabet','heart problem','heart condition','blood pressure','medication','medicine'],a:`If you have kidney or liver disease, diabetes, a heart condition or high blood pressure, take regular medicines, or are pregnant or breastfeeding, please check with a doctor or registered dietitian before using protein powders, creatine or pre-workouts. I can explain how products differ, but I can't judge what's safe for your health.`},
+{w:3,k:['teen','14 year','15 year','16 year','17 year','school','under 18','minor'],a:`If you're under 18, focus on food first: milk, curd, paneer, eggs, dal, soy and regular meals usually cover your protein needs. Learn good technique with a qualified coach. Please talk to a parent and a doctor before using any supplement, and avoid pre-workouts and fat burners.`},
+{k:['how much protein','protein requirement','daily protein','protein need','protein per day','kitna protein','protein kitna','grams of protein'],a:`Most people who strength train do well on about 1.4–2.0 g of protein per kg of body weight per day. For a 70 kg person that's roughly 100–140 g a day. Spread it over 3–5 meals of about 20–40 g each. Food comes first; a powder only fills the gap. Try the protein calculator on this page for your own number.`,s:S.prot},
+{k:['isolate','concentrate','wpc','wpi','hydroly'],a:`Whey concentrate is less filtered, so it has a little more lactose, fat and carbs; most gym concentrates are around 70–80% protein. Whey isolate is filtered further, around 90% protein with very little lactose. Hydrolysed whey is pre-digested; it absorbs faster and costs more, but the muscle-building difference is small. If dairy suits your stomach, concentrate is usually better value. If lactose bothers you, isolate is worth it. Compare ₹ per 25 g of protein, not the price per tub.`},
+{w:2,k:['yeast protein'],a:`Yeast protein is a newer, fermentation-based protein. It can count towards your daily protein, but there are far fewer human muscle-building studies on it than on whey, milk or soy protein. If you choose it, check protein per serving, the leucine content if listed, and whether there's an independent lab report. Be cautious with bold marketing claims until more research is out.`},
+{k:['creatine'],a:`Creatine monohydrate is the most researched supplement for strength and muscle, and it's considered safe for healthy adults at normal doses. Take 3–5 g every day, at any time. Loading (about 20 g a day for 5–7 days) is optional; it just fills your stores faster. Expect a small gain in water weight at first, often 1–2 kg — that's water in the muscle, not fat. Pricier forms like HCl, ethyl ester or buffered creatine haven't been shown to beat plain monohydrate. Beginners can use it, but it isn't required.`,s:S.crea},
+{k:['gainer','weight gain','underweight','skinny','patla','gain weight'],a:`A mass gainer is mostly carbohydrates with some protein, so one serving can add several hundred to over 1,000 calories. Whey is mostly protein with few calories. If you struggle to eat enough, a gainer — or a homemade shake of milk, banana, oats, peanut butter and whey — can help you reach a calorie surplus. Aim for a slow gain of about 0.25–0.5% of body weight per week. If you can eat enough food, you don't need a gainer.`},
+{k:['genuine','fake','original','authentic','counterfeit','duplicate','asli','nakli'],a:`To lower the risk of fake supplements:
+• Buy from the brand's own store or an authorised retailer; on Amazon or Flipkart, check the seller name.
+• Check the seal, batch number, manufacturing and expiry dates, and the FSSAI licence number.
+• Use the brand's QR or scratch-code check on its official website.
+• Be wary of prices far below every trusted retailer.
+• Look for independent lab reports for that exact product and batch.
+An FSSAI licence shows the business is licensed; it isn't proof that a specific tub was lab-tested.`,s:S.fssai},
+{k:['lactose','dairy','milk allergy','bloat','gas','acidity','stomach'],a:`If regular milk upsets your stomach, whey isolate is usually easier because it has very little lactose. Plant or soy protein avoids dairy completely. A milk allergy is different from lactose intolerance — with an allergy, avoid whey and casein entirely and speak to a doctor.`},
+{k:['vegetarian','vegan','plant protein','without egg','no egg','jain','veg protein'],a:`You can meet your protein needs on a vegetarian diet. Good Indian sources, approximately:
+• Soya chunks: about 50 g protein per 100 g dry
+• Paneer: about 18–20 g per 100 g
+• Curd: about 3–4 g per 100 g; hung curd or Greek yogurt more
+• Milk: about 3 g per 100 ml
+• Cooked dal: about 6–9 g per katori
+• Tofu, peanuts, chana and rajma
+Combine a few at each meal and check labels for exact numbers. Plant protein powders (soy, pea or blends) work well if food falls short — compare protein per serving, since many blends are lower than whey.`},
+{k:['beginner','routine','workout plan','split','start gym','new to gym','first time','schedule','exercise plan'],a:`A simple beginner plan: train full body 3 days a week (for example Mon, Wed, Fri). Each session do 4–6 exercises — a squat or leg press, a hinge like Romanian deadlift, a push like bench press or push-ups, a pull like rows or lat pulldowns, plus shoulders and core. Do 2–3 sets of 8–12 reps, stopping 1–3 reps before failure. When all sets feel solid, add a little weight or a rep — that's progressive overload. Warm up for 5–10 minutes, sleep 7–9 hours, and learn technique from a qualified trainer.`,s:S.acsm},
+{k:['expensive','worth it','value','per gram','price per','costly','mehenga','better protein'],a:`No — a higher price doesn't make a protein better. Compare the cost per 25 g of actual protein: total protein = pack weight × protein per serving ÷ serving size; then divide the price by total protein and multiply by 25. A cheaper tub with less protein per scoop can be worse value. The value checker on this page does the maths for you. Also weigh in seller authenticity and independent lab testing.`},
+{k:['fat loss','lose weight','weight loss','cutting','belly fat','burn fat','motapa','lose fat'],a:`Fat loss comes from a steady calorie deficit, often about 300–500 kcal below maintenance. Keep protein high (around 1.6–2.2 g per kg) and keep lifting so you hold on to muscle. Walk daily, sleep well, and aim to lose about 0.5–1% of body weight per week. No supplement burns fat by itself, so be wary of fat burners. Use the calorie calculator here to estimate your maintenance.`},
+{k:['muscle gain','build muscle','bulk','hypertrophy','gain muscle','body banana','muscle banana'],a:`To build muscle: lift with progressive overload 3–5 days a week, eat a small calorie surplus (about 250–400 kcal above maintenance), get around 1.6–2.2 g of protein per kg of body weight, and sleep 7–9 hours. Beginners can gain steadily for months this way. Supplements are optional — whey and creatine monohydrate are the best supported.`,s:S.mort},
+{w:2,k:['bcaa','eaa','amino'],a:`If you already eat enough total protein, BCAA supplements add little for muscle growth — whey and food protein already contain them. EAAs are more complete than BCAAs, but a scoop of whey usually gives you the same amino acids for less money. They may suit people who can't tolerate protein powders.`},
+{k:['pre workout','preworkout','pre-workout','caffeine','energy before'],a:`Most pre-workouts rely on caffeine. Research supports about 3–6 mg of caffeine per kg of body weight, 30–60 minutes before training. Start lower, count tea and coffee in your daily total, and avoid it late in the day so it doesn't spoil sleep. Skip pre-workouts if you're under 18, pregnant, have heart or blood pressure problems, or are sensitive to caffeine. Citrulline and beta-alanine have some supporting evidence; many other ingredients don't.`,s:S.caff},
+{k:['when to take','timing','after workout','post workout','before workout','empty stomach','anabolic window'],a:`Your total protein across the day matters much more than exact timing. Having 20–40 g of protein within a couple of hours before or after training is a simple, good habit. Creatine timing doesn't matter much — just take it daily.`,s:S.prot},
+{k:['sleep','recovery','sore','rest day','overtraining','tired'],a:`Recovery basics: sleep 7–9 hours, eat enough protein and calories, keep at least one rest day a week, and avoid training the same muscle hard on back-to-back days. Some soreness is normal when you start; sharp or joint pain isn't — stop that exercise and get it checked.`},
+{k:['casein'],a:`Casein digests slowly, so some people take it before bed. Studies suggest pre-sleep protein can support overnight muscle repair, but your total daily protein still matters most. Milk, curd and paneer are natural casein sources.`},
+{k:['multivitamin','omega','fish oil','vitamin d','magnesium','zinc'],a:`Vitamins and minerals help when your diet or a blood test shows a gap — vitamin D, for example, is often low in India. They don't build muscle directly. It's best to test first and ask a doctor before taking high doses.`,s:S.ods},
+{w:.5,k:[' hi ',' hello ',' hey ',' namaste ',' help ','what can you do','who are you'],a:`Hi! I'm FIT-X. I can explain protein types, creatine, gainers, beginner workouts, fat loss and muscle gain, how to spot fake supplements, and how to compare value per gram of protein. Ask me anything, or tap a suggestion below.`}];
+const GREET=`Hi! I'm FIT-X, your personal AI fitness companion. Welcome to FitFuel AI! I can help you compare supplement prices, choose the right protein, understand nutrition and reach your fitness goals. How can I help you today?`;
+const FALLBACK=`I don't have a verified answer for that yet, and I'd rather not guess. I can help with protein, creatine, gainers, pre-workouts, beginner training, fat loss, muscle gain and spotting fake supplements. For medical questions, please speak to a doctor or registered dietitian.`;
+const STOP=new Set('best cheapest cheap price prices under below budget for me the a an of in india which what is rs rupees buy good top kaun sa sasta suggest recommend please'.split(' '));
+function findAnswer(q){const t=' '+q.toLowerCase().replace(/[?!.,—]/g,' ').replace(/\s+/g,' ')+' ';let best=null,sc=0;for(const e of KB){let s=0;for(const k of e.k)if(t.includes(k))s+=k.trim().length>6?2:1;s*=(e.w||1);if(s>sc){sc=s;best=e}}return sc>0?best:null}
+function priceIntent(q){const t=q.toLowerCase();return /(cheap|price|under|budget|₹|\brs\b|sasta|kitne ka|cost)/.test(t)&&/(whey|protein|creatine|gainer|isolate|bcaa|eaa|pre.?workout)/.test(t)}
+
+/* Chat */
+let muted=store.get('ff-mute',false),greeted=false;
+function setMute(m){muted=m;store.set('ff-mute',m);$('#muteBtn').innerHTML=m?'&#128263;':'&#128266;';$('#muteBtn').setAttribute('aria-label',m?'Unmute voice':'Mute voice');if(m)stopSpeak()}
+const SUG=['How much protein do I need?','Isolate vs concentrate?','Which creatine is best?','Is my protein genuine?','Beginner gym routine','Best whey under ₹2,000'];
+$('#csug').innerHTML=SUG.map(s=>`<button class="chip" data-ask="${esc(s)}">${esc(s)}</button>`).join('');
+function addMsg(html,who){const d=document.createElement('div');d.className='msg '+who;d.innerHTML=html;$('#cmsgs').appendChild(d);$('#cmsgs').scrollTop=$('#cmsgs').scrollHeight;return d}
+function botSay(text,src){addMsg(esc(text).replace(/\n/g,'<br>')+(src?`<div class="src">Source: <a href="${src.u}" target="_blank" rel="noopener">${esc(src.t)}</a></div>`:''),'bot');speak(text)}
+function openChat(q){$('#chat').classList.add('open');$('#fab').classList.add('hide');if(!greeted){greeted=true;botSay(GREET)}if(q)ask(q);else setTimeout(()=>$('#cin').focus(),60)}
+function closeChat(){$('#chat').classList.remove('open');$('#fab').classList.remove('hide');stopSpeak()}
+function ask(q){q=q.trim();if(!q)return;addMsg(esc(q),'me');botState('think');const typing=addMsg('<span class="muted">FIT-X is thinking…</span>','bot');
+ setTimeout(()=>{typing.remove();botState('');
+  if(priceIntent(q)){const kw=q.replace(/[₹?!.,]/g,' ').split(/\s+/).filter(w=>w&&!STOP.has(w.toLowerCase())&&!/^\d/.test(w)).join(' ')||q;runSearch(kw,false);botSay(`I don't show guessed prices. I've opened live retailer searches for "${kw}" on the page — check the price there, then use the value checker to compare ₹ per 25 g of protein. Also check that the seller is authorised, and prefer products with independent lab reports.`);return}
+  const e=findAnswer(q);e?botSay(e.a,e.s):botSay(FALLBACK)},450)}
+$('#cform').onsubmit=e=>{e.preventDefault();const v=$('#cin').value;$('#cin').value='';ask(v)};
+$('#fab').onclick=()=>openChat();$('#talkBtn').onclick=()=>openChat();$('#ctaBtn').onclick=()=>openChat();$('#minBtn').onclick=closeChat;
+$('#muteBtn').onclick=()=>setMute(!muted);$('#stopBtn').onclick=()=>stopSpeak();
+$('#clearBtn').onclick=()=>{stopSpeak();$('#cmsgs').innerHTML='';greeted=true;botSay('Chat cleared. What would you like to know?')};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#chat').classList.contains('open'))closeChat()});
+
+/* Voice */
+let voices=[];const hasTTS='speechSynthesis' in window;
+function loadV(){voices=speechSynthesis.getVoices()}
+if(hasTTS){loadV();speechSynthesis.onvoiceschanged=loadV}
+function speak(text){if(muted||!hasTTS)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text.replace(/₹\s?/g,'rupees ').replace(/•/g,'').replace(/–/g,' to '));
+ const v=voices.find(v=>v.lang==='en-IN')||voices.find(v=>v.lang&&v.lang.startsWith('en'));if(v){u.voice=v;u.lang=v.lang}else u.lang='en-IN';u.rate=1.02;
+ u.onstart=()=>botState('talk');u.onend=u.onerror=()=>botState('');speechSynthesis.speak(u)}
+function stopSpeak(){if(hasTTS)speechSynthesis.cancel();botState('')}
+setMute(muted);
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let rec=null;
+function listen(input,done){if(!SR){toast('Voice input isn’t supported in this browser. Try Chrome, or type instead.');return}
+ if(rec){try{rec.stop()}catch(e){}return}stopSpeak();rec=new SR();rec.lang=$('#lang').value;rec.interimResults=true;rec.maxAlternatives=1;botState('listen');toast('Listening…');
+ rec.onresult=e=>{let s='';for(const r of e.results)s+=r[0].transcript;input.value=s};
+ rec.onerror=e=>{toast(e.error==='not-allowed'||e.error==='service-not-allowed'?'Microphone blocked. Allow it in your browser settings.':'Didn’t catch that. Please try again.')};
+ rec.onend=()=>{rec=null;botState('');const v=input.value.trim();if(v)done(v)};
+ try{rec.start()}catch(e){rec=null;botState('')}}
+$('#cmic').onclick=()=>listen($('#cin'),v=>{$('#cin').value='';ask(v)});
+$('#qmic').onclick=()=>listen($('#q'),v=>runSearch(v));
+
+/* Mobile nav and scroll reveal */
+$$('.bnav button').forEach(b=>b.onclick=()=>{const g=b.dataset.go;if(g==='coach')return openChat();if(g==='search'){window.scrollTo({top:0,behavior:'smooth'});setTimeout(()=>$('#q').focus(),300);return}if(g==='top')return window.scrollTo({top:0,behavior:'smooth'});$('#'+g).scrollIntoView({behavior:'smooth'})});
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});$$('.rv').forEach(el=>io.observe(el))}else $$('.rv').forEach(el=>el.classList.add('in'));
+</script>
+</body>
+</html>
